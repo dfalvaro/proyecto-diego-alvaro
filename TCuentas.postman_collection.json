@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "0a79cbcd-3ca4-4985-8dfe-623fab3a8e72",
+		"name": "TCuentas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32311456"
+	},
+	"item": [
+		{
+			"name": "Get Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/cuentas"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/cuentas/478758"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clienteId\": \"1\",\r\n    \"tipoCuenta\": \"Corriente\",\r\n    \"saldoInicial\": 1000.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/cuentas/crear"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clienteId\": \"1\",\r\n    \"tipoCuenta\": \"Corriente\",\r\n    \"saldoInicial\": 1500.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/cuentas/495878"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Data",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clienteId\": \"1\",\r\n    \"tipoCuenta\": \"Corriente\",\r\n    \"saldoInicial\": 1500.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/cuentas/495878"
+			},
+			"response": []
+		}
+	]
+}

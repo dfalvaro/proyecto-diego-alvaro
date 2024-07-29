@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "fbd6fb57-5a97-4985-972f-2b8bfcd81f6c",
+		"name": "TReporte",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32311456"
+	},
+	"item": [
+		{
+			"name": "Get Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/reportes?clienteId=2&fechaInicio=2024-01-01&fechaFin=2024-12-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"reportes"
+					],
+					"query": [
+						{
+							"key": "clienteId",
+							"value": "2"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "fechaFin",
+							"value": "2024-12-31"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

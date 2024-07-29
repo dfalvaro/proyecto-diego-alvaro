@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "3bbc9bbe-4a9c-41d9-87c0-e5cdac5431f2",
+		"name": "TMovimientos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32311456"
+	},
+	"item": [
+		{
+			"name": "Get Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/movimientos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/movimientos/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/movimientos/registrar?numeroCuenta=495878&tipoMovimiento=Deposito&valor=50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"movimientos",
+						"registrar"
+					],
+					"query": [
+						{
+							"key": "numeroCuenta",
+							"value": "495878"
+						},
+						{
+							"key": "tipoMovimiento",
+							"value": "Deposito"
+						},
+						{
+							"key": "valor",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"2024-06-10T06:34:11.767+00:00\",\r\n    \"tipoMovimiento\": \"Depósito\",\r\n    \"valor\": -50,\r\n    \"saldo\": 1650.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/movimientos/3"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Data",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8081/api/movimientos/3"
+			},
+			"response": []
+		}
+	]
+}

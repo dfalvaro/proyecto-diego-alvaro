@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "886933b6-293e-4b14-9de5-865ef75ee408",
+		"name": "TClientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32311456"
+	},
+	"item": [
+		{
+			"name": "Create Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Vale\",\r\n    \"genero\": \"Femenino\",\r\n    \"edad\": 30,\r\n    \"identificacion\": \"1234567891\",\r\n    \"direccion\": \"Calle Falsa 1233\",\r\n    \"telefono\": \"1234567891\",\r\n    \"contrasenia\": \"1239\",\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Data",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Ana\",\r\n    \"genero\": \"Femenino\",\r\n    \"edad\": 30,\r\n    \"identificacion\": \"1234567891\",\r\n    \"direccion\": \"Calle Falsa 1233\",\r\n    \"telefono\": \"1234567891\",\r\n    \"contrasenia\": \"123\",\r\n    \"clienteid\": 2,\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Ana\",\r\n    \"genero\": \"Femenino\",\r\n    \"edad\": 30,\r\n    \"identificacion\": \"1234567891\",\r\n    \"direccion\": \"Calle Falsa 1233\",\r\n    \"telefono\": \"1234567891\",\r\n    \"contrasenia\": \"123\",\r\n    \"clienteid\": 2,\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/clientes/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Ana Maria lopez\",\r\n    \"genero\": \"Femenino\",\r\n    \"edad\":35,\r\n    \"identificacion\": \"1234567891\",\r\n    \"direccion\": \"Calle Falsa 1233\",\r\n    \"telefono\": \"1234567891\",\r\n    \"contrasenia\": \"123\",\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/clientes/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete data",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Ana Maria\",\r\n    \"genero\": \"Femenino\",\r\n    \"edad\":35,\r\n    \"identificacion\": \"1234567891\",\r\n    \"direccion\": \"Calle Falsa 1233\",\r\n    \"telefono\": \"1234567891\",\r\n    \"contrasenia\": \"123\",\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/clientes/5"
+			},
+			"response": []
+		}
+	]
+}
