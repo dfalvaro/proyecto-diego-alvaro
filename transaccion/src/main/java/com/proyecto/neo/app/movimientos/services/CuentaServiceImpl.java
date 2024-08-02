@@ -48,7 +48,6 @@ public class CuentaServiceImpl implements CuentaService {
             "http://localhost:8080/api/clientes/" + clienteId, ClienteDto.class);
 
             if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-                ClienteDto cliente = response.getBody();
                 
                 // Crear y guardar la cuenta en la base de datos
                 Cuenta cuenta = new Cuenta();
@@ -95,6 +94,20 @@ public class CuentaServiceImpl implements CuentaService {
         });
         return cuentaOptional;
     }
+
+    @Transactional
+    @Override
+    public List<Cuenta> findByClienteId(Long clienteId) {
+        return repository.findByClienteId(clienteId);
+    }
+
+    @Transactional
+    @Override
+    public void deleteByClienteId(Long clienteId) {
+        List<Cuenta> cuentas = repository.findByClienteId(clienteId);
+        cuentas.forEach(cuenta -> repository.delete(cuenta));
+    }
+
 
     private String generarNumeroCuentaUnico() {
         SecureRandom random = new SecureRandom();

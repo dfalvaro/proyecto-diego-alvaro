@@ -14,6 +14,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
@@ -25,10 +27,17 @@ public class Movimiento {
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @NotNull(message = "La fecha del movimiento no puede ser nula")
     private Date fecha;
+    
     @Column(name = "tipo_movimiento")
+    @NotEmpty(message = "El tipo de movimiento no puede estar vacío")
     private String tipoMovimiento;
+
+    @NotNull(message = "El valor del movimiento no puede ser nulo")
     private BigDecimal valor;
+
+    @NotNull(message = "El saldo después del movimiento no puede ser nulo")
     private BigDecimal saldo;
 
     @ManyToOne(fetch = FetchType.LAZY)

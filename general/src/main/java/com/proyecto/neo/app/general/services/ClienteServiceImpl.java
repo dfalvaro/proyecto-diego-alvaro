@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proyecto.neo.app.general.entities.Cliente;
+import com.proyecto.neo.app.general.exceptions.ResourceNotFoundException;
 import com.proyecto.neo.app.general.repositories.ClienteRepository;
 
 @Service
@@ -15,6 +17,9 @@ public class ClienteServiceImpl implements ClienteService{
 
     @Autowired
     private ClienteRepository repository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
     @Override
@@ -25,12 +30,15 @@ public class ClienteServiceImpl implements ClienteService{
     @Override
     @Transactional(readOnly = true)
     public Optional<Cliente> findById(Long id) {
-        return repository.findById(id);
+        return Optional.ofNullable(repository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con id: " + id)));
+
     }
 
     @Override
     @Transactional
     public Cliente save(Cliente cliente) {
+        cliente.setContrasenia(passwordEncoder.encode(cliente.getContrasenia()));
         return repository.save(cliente);
     }
 
@@ -47,7 +55,11 @@ public class ClienteServiceImpl implements ClienteService{
             clienteDb.setIdentificacion(cliente.getIdentificacion());
             clienteDb.setDireccion(cliente.getDireccion());
             clienteDb.setTelefono(cliente.getTelefono());
-            clienteDb.setContrasenia(cliente.getContrasenia());
+
+            if (cliente.getContrasenia() != null && !cliente.getContrasenia().isEmpty()) {
+                clienteDb.setContrasenia(passwordEncoder.encode(cliente.getContrasenia()));
+            }
+
             clienteDb.setEstado(cliente.getEstado());
 
             return Optional.of(repository.save(clienteDb));
@@ -60,10 +72,13 @@ public class ClienteServiceImpl implements ClienteService{
     @Override
     public Optional<Cliente> delete(Long id) {
         Optional<Cliente> clienteOptional = repository.findById(id);
-        clienteOptional.ifPresent(clienteDb -> {
-            repository.delete(clienteDb);
-        });
-        return clienteOptional;
+        if (clienteOptional.isPresent()) {
+            Cliente cliente = clienteOptional.get();
+            repository.delete(cliente);
+            return Optional.of(cliente);
+        } else {
+            throw new ResourceNotFoundException("Cliente no encontrado con id: " + id);
+        }
     }
 
 }

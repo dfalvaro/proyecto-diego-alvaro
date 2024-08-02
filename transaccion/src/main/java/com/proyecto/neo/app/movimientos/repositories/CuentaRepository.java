@@ -12,5 +12,6 @@ public interface CuentaRepository extends CrudRepository<Cuenta,String>{
      List<Cuenta> findByClienteId(Long clienteId);
 
      Optional<Cuenta> findByNumeroCuenta(String numeroCuenta);
+     
 
 }

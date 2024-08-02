@@ -36,7 +36,7 @@ public class MovimientoServiceImpl implements MovimientoService {
 
     @Override
     @Transactional
-    public Movimiento registrarMovimiento(String numeroCuenta, String tipoMovimiento, BigDecimal valor) {
+    public Movimiento registerMovement(String numeroCuenta, String tipoMovimiento, BigDecimal valor) {
         Cuenta cuenta = cuentaRepository.findByNumeroCuenta(numeroCuenta)
                 .orElseThrow(() -> new RuntimeException("Cuenta no encontrada"));
 
